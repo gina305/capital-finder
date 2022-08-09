@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler
-
+drom urllib import parse
 
 
 class handler(BaseHTTPRequestHandler):
@@ -8,6 +8,6 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    msg = "Updated text".encode()
+    msg = self.path.encode()
     self.wfile.write(msg)
     return 
