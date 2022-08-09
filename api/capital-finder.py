@@ -7,7 +7,7 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    params = parse.urslplit(self.path)
+    params = parse.urlsplit(self.path)
     params_list = parse.parse_qsl(params.query)
     msg = str(params_list)      
 
