@@ -20,7 +20,7 @@ class handler(BaseHTTPRequestHandler):
 
     self.wfile.write(str(url_components.encode()))
 
-    self.wfile.write(stre(query_dict.encode()))
+    self.wfile.write(str(query_dict.encode()))
 
 
     self.wfile.write(msg.encode())
