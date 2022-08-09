@@ -9,5 +9,5 @@ class handler(BaseHTTPRequestHandler):
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
     msg = self.path
-    self.wfile.write(msg)
+    self.wfile.write(msg.encode())
     return 
