@@ -16,11 +16,6 @@ class handler(BaseHTTPRequestHandler):
 
     query_dict = dict(query_string_list)
     msg = str(query_dict)
-    #msg="testing"
-
-    self.wfile.write(str(url_components.encode()))
-
-    self.wfile.write(str(query_dict.encode()))
 
 
     self.wfile.write(msg.encode())
