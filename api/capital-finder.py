@@ -8,5 +8,9 @@ class handler(BaseHTTPRequestHandler):
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
     msg = self.path
-    self.wfile.write(msg.encode())
+
+    params = parse.urslplit(self.path)
+    params_list = parse.parse_qsl(params.query)
+
+    self.wfile.write(str(params_list))
     return
