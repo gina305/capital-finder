@@ -18,5 +18,6 @@ class handler(BaseHTTPRequestHandler):
     msg = str(query_dict)
 
 
+
     self.wfile.write(msg.encode())
     return
