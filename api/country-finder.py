@@ -8,6 +8,9 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    msg = self.path
+
+    url_componenets = parse.urlsplit(self.path)
+
+    msg ="is it working again?"
     self.wfile.write(msg.encode())
     return 
