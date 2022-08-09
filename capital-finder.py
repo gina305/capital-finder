@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 from datetime import datetime
+from urllib import parse
 
 class handler(BaseHTTPRequestHandler):
 
@@ -8,12 +9,14 @@ class handler(BaseHTTPRequestHandler):
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
     
-    url_components = parse.urlsplit(self.path)
-    query_string_list = parse.parse_qsl(url_components.query)
+    # url_components = parse.urlsplit(self.path)
+    # query_string_list = parse.parse_qsl(url_components.query)
     
   
 
-    q_dict = dict(query_string_list)
-    msg = str(q_dict)
+    query_dict = dict(query_string_list)
+    msg = str(query_dict)
+    msg="testing"
+
     self.wfile.write(msg.encode())
     return
