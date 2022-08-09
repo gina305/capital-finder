@@ -13,4 +13,6 @@ class handler(BaseHTTPRequestHandler):
 
   
     self.wfile.write(msg.encode())
+    print(msg)
+    print(msg.encode())
     return
