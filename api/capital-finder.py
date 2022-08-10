@@ -21,7 +21,12 @@ class handler(BaseHTTPRequestHandler):
       
       if query_dict[item].lower() == 'country':
         msg= str(item)
-    #msg="testing"
+
+    if (msg != "country"):
+      msg = "Please make a valid request. I.e. .../capital-finder?country=Bahamas"
+    else:
+
+          #msg="testing"
 
 
     #Call the country finder\
