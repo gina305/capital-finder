@@ -22,8 +22,8 @@ class handler(BaseHTTPRequestHandler):
     
 
     for key, value in query_dict.items():
-      if key.lower() == "country":
-        msg = value
+      if str(key.lower()) == "country":
+        msg = str(value)
 
    
     self.wfile.write(msg.encode())
