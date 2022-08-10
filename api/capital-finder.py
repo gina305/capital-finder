@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 from datetime import datetime
 from urllib import parse
-
+import requests
 class handler(BaseHTTPRequestHandler):
 
   def do_GET(self):
@@ -25,6 +25,20 @@ class handler(BaseHTTPRequestHandler):
     if msg == "":
       self.wfile.write("Invalid query. Enter a country. I.e. /api/capital-finder?country=Bahamas".encode())
     else:
-      self.wfile.write(msg.encode())
       
+      url = 'https://restcountries.com/v3.1/capital/'
+            query = msg
+            query_url = url + query
+
+            response = requests.get(query_url)
+            data = response.json()
+
+            parsed_country = data[0]['name']
+            country = str(parsed_country['common'])
+            result_str = f"{query.upper()} is the capital of {country.upper()}"
+
+            self.wfile.write(result_str.encode())
+      
+      self.wfile.write(msg.encode())
+
     return
