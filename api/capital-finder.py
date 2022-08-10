@@ -1,4 +1,3 @@
-import enum
 from http.server import BaseHTTPRequestHandler
 from datetime import datetime
 from urllib import parse
@@ -14,22 +13,18 @@ class handler(BaseHTTPRequestHandler):
     query_string_list = parse.parse_qsl(url_components.query)
     
   
+
     query_dict = dict(query_string_list)
+    msg = str(query_dict)
 
 
-    for  item in query_dict:
-      
-      if query_dict[item].lower() == 'country':
-        msg= str(item)
 
-    if (msg != "country"):
-      msg = "Please make a valid request. I.e. .../capital-finder?country=Bahamas"
-    else:
+    
 
-          #msg="testing"
+    for key, value in query_dict.items():
+      if key.lower() == "country":
+        msg = value
 
-
-    #Call the country finder\
-
+   
     self.wfile.write(msg.encode())
     return
