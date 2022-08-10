@@ -26,6 +26,5 @@ class handler(BaseHTTPRequestHandler):
       self.wfile.write("Invalid query. Enter a country. I.e. /api/capital-finder?country=Bahamas".encode())
     else:
       self.wfile.write(msg.encode())
-
-    self.wfile.write(msg.encode())
+      
     return
