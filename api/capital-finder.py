@@ -15,24 +15,18 @@ class handler(BaseHTTPRequestHandler):
   
     #Store user request values
     query_dict = dict(query_string_list)
-
+    user_response = ""
     #Extract only the country
     for key, value in query_dict.items():
       if str(key.lower()) == "country":
         msg = str(value)
         capital = getCapital(msg)
+        user_response = f"The capital of {msg} is {capital}"
         break
      
 
-  
-    user_response = f"The capital of {msg} is {capital}"
-
-    
-
-    #self.wfile.write(r_string.encode()) 
-
     def getCapital(country):
-      url = 'https://restcountries.com/v3.1/name/Jamaica' + country
+      url = 'https://restcountries.com/v3.1/name/' + country
 
       #Create a http request
       r = requests.get(url)
