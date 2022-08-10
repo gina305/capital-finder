@@ -14,4 +14,3 @@ r_objects = r.json()
  #Extract and save the capital of the response
 capital = r_objects[0]
 capital = capital.get('capital')[0]
-
