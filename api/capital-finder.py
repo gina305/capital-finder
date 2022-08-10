@@ -21,6 +21,7 @@ class handler(BaseHTTPRequestHandler):
     for key, value in query_dict.items():
       if str(key.lower()) == "country":
         msg = str(value)
+        break
 
     if msg == "":
       self.wfile.write(f"Invalid query:{msg} -Enter a country. I.e. /api/capital-finder?country=Bahamas".encode())
@@ -37,7 +38,7 @@ class handler(BaseHTTPRequestHandler):
       #Extract and save the capital of the response
       capital = r_objects[0]
       capital = capital.get('capital')[0]
-    user_response = f"The capital of {msg} is {capital}"
+      user_response = f"The capital of {msg} is {capital}"
 
     self.wfile.write(user_response.encode())  
 
