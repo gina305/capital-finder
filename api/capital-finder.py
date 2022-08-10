@@ -26,19 +26,10 @@ class handler(BaseHTTPRequestHandler):
       self.wfile.write("Invalid query. Enter a country. I.e. /api/capital-finder?country=Bahamas".encode())
     else:
       
-      url = 'https://restcountries.com/v3.1/name/'
-            query = msg
-            query_url = url + query
-
-            response = requests.get(query_url)
-            data = response.json()
-
-            parsed_country = data[0]['name']
-            country = str(parsed_country['common'])
-            result_str = f"{query.upper()} is the capital of {country.upper()}"
-
-      self.wfile.write(result_str.encode())
+    url = 'https://restcountries.com/v3.1/name/' + msg
       
       self.wfile.write(msg.encode())
+      self.wfile.write(url.encode())
+
 
     return
