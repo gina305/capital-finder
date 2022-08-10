@@ -27,9 +27,13 @@ class handler(BaseHTTPRequestHandler):
     else:
       
       url = 'https://restcountries.com/v3.1/name/' + msg
+
+      r = requests.get(url)
+      r = str(dir(r))
       
-    self.wfile.write(msg.encode())
+    self.wfile.write(r.json.encode())
     self.wfile.write(url.encode())
+    self.wfile.write(r.encode())
 
 
     return
