@@ -37,7 +37,7 @@ class handler(BaseHTTPRequestHandler):
             country = str(parsed_country['common'])
             result_str = f"{query.upper()} is the capital of {country.upper()}"
 
-            self.wfile.write(result_str.encode())
+      self.wfile.write(result_str.encode())
       
       self.wfile.write(msg.encode())
 
