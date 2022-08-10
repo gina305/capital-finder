@@ -28,10 +28,11 @@ class handler(BaseHTTPRequestHandler):
       
       url = 'https://restcountries.com/v3.1/name/' + msg
 
-      r = requests.get(url)
+      r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
+     
 
     self.wfile.write(msg.encode())  
-    self.wfile.write(r.json())
+    self.wfile.write(r.status_code.encode())
     self.wfile.write(url.encode())
 
 
