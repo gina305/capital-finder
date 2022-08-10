@@ -23,7 +23,7 @@ class handler(BaseHTTPRequestHandler):
         msg = str(value)
         break
 
-    if msg == "":
+    if msg != "country":
       self.wfile.write(f"Invalid query:{msg} -Enter a country. I.e. /api/capital-finder?country=Bahamas".encode())
     else:
       
