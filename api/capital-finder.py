@@ -28,13 +28,14 @@ class handler(BaseHTTPRequestHandler):
       
       url = 'https://restcountries.com/v3.1/name/' + msg
 
-      r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
+      r = requests.get(url)
 
       r_string = r.text
 
+
     self.wfile.write(msg.encode())  
-    self.wfile.write(r_string)
     self.wfile.write(url.encode())
+    self.wfile.write(r_string.encode()) 
 
 
 
