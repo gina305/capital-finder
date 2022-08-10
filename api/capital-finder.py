@@ -21,18 +21,18 @@ class handler(BaseHTTPRequestHandler):
     for key, value in query_dict.items():
       if str(key.lower()) == "country":
         msg = str(value)
-<<<<<<< HEAD
+
         url = 'https://restcountries.com/v3.1/name/' + msg
 
           #Create a http request
 
         break
     r = requests.get(url)
-=======
+
         capital = getCapital(msg)
         break
      
->>>>>>> 72a00179d9b00cfd835a867f4688fc27da408d43
+
 
               #Saves the response as a dictionary
     r_objects = r.json() 
@@ -41,7 +41,7 @@ class handler(BaseHTTPRequestHandler):
     capital = r_objects[0]
     capital = capital.get('capital')[0]
   
-<<<<<<< HEAD
+
     user_response = f"The capital of {msg} is {capital}."
 
     if user_response == "":
@@ -49,7 +49,7 @@ class handler(BaseHTTPRequestHandler):
     
     else:
       self.wfile.write(user_response.encode()) 
-=======
+
     user_response = f"The capital of {msg} is {capital}"
 
     
@@ -61,7 +61,7 @@ class handler(BaseHTTPRequestHandler):
 
       #Create a http request
       r = requests.get(url)
->>>>>>> 72a00179d9b00cfd835a867f4688fc27da408d43
+
 
       #Saves the response as a dictionary
       r_objects = r.json() 
