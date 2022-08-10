@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler
-from datetime import datetime
 from urllib import parse
 import requests
+
 class handler(BaseHTTPRequestHandler):
 
   def do_GET(self):
@@ -20,25 +20,30 @@ class handler(BaseHTTPRequestHandler):
     for key, value in query_dict.items():
       if str(key.lower()) == "country":
         msg = str(value)
+        capital = getCapital(msg)
         break
+     
 
-    url = 'https://restcountries.com/v3.1/name/' + msg
-
-      #Create a http request
-    r = requests.get(url)
-
-      #Saves the response as a dictionary
-    r_objects = r.json() 
-
-      #Extract and save the capital of the response
-    capital = r_objects[0]
-    capital = capital.get('capital')[0]
+  
     user_response = f"The capital of {msg} is {capital}"
 
-    self.wfile.write(user_response.encode())  
+    
 
     #self.wfile.write(r_string.encode()) 
 
+    def getCapital(country):
+      url = 'https://restcountries.com/v3.1/name/Jamaica' + country
 
+      #Create a http request
+      r = requests.get(url)
 
+      #Saves the response as a dictionary
+      r_objects = r.json() 
+
+      #Extract and save the capital of the response
+      capital = r_objects[0]
+      capital = capital.get('capital')[0]
+      return capital
+
+    self.wfile.write(user_response.encode())  
     return
