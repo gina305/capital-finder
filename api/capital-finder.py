@@ -33,9 +33,9 @@ class handler(BaseHTTPRequestHandler):
       r_string = r.text
 
 
-    self.wfile.write(msg.encode())  
+    # self.wfile.write(msg.encode())  
     self.wfile.write(url.encode())
-    self.wfile.write(r_string.encode()) 
+    #self.wfile.write(r_string.encode()) 
 
 
 
