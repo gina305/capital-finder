@@ -17,9 +17,10 @@ class handler(BaseHTTPRequestHandler):
     query_dict = dict(query_string_list)
 
 
-    for key, value in enumerate(query_dict):
-      if key.lower() == 'country':
-        msg= str(key)
+    for  item in query_dict:
+      
+      if query_dict[item].lower() == 'country':
+        msg= str(item)
     #msg="testing"
 
 
