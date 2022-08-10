@@ -9,6 +9,7 @@ class handler(BaseHTTPRequestHandler):
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
     msg = ""
+    user_response =  ""
     url_components = parse.urlsplit(self.path)
     query_string_list = parse.parse_qsl(url_components.query)
     
@@ -34,12 +35,12 @@ class handler(BaseHTTPRequestHandler):
     capital = r_objects[0]
     capital = capital.get('capital')[0]
   
-    user_response = f"The capital of {msg} is {capital}"
+    user_response = f"The capital of {msg} is {capital}."
 
-    self.wfile.write(user_response.encode())  
-
-    #self.wfile.write(r_string.encode()) 
-
-
+    if user_response == "":
+      self.wfile.write("Please enter a valid request (i.e. /api/capital-finder?country=Bahamas)".encode())  
+    
+    else:
+      self.wfile.write(user_response.encode()) 
 
     return
