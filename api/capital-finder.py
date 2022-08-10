@@ -23,16 +23,16 @@ class handler(BaseHTTPRequestHandler):
         url = 'https://restcountries.com/v3.1/name/' + msg
 
           #Create a http request
-        r = requests.get(url)
 
-          #Saves the response as a dictionary
-        r_objects = r.json() 
-
-          #Extract and save the capital of the response
-        capital = r_objects[0]
-        capital = capital.get('capital')[0]
         break
+    r = requests.get(url)
 
+              #Saves the response as a dictionary
+    r_objects = r.json() 
+
+              #Extract and save the capital of the response
+    capital = r_objects[0]
+    capital = capital.get('capital')[0]
   
     user_response = f"The capital of {msg} is {capital}"
 
