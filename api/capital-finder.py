@@ -31,7 +31,7 @@ class handler(BaseHTTPRequestHandler):
           #Extract and save the capital of the response
         capital = r_objects[0]
         capital = capital.get('capital')[0]
-        break
+     
 
   
     user_response = f"The capital of {msg} is {capital}"
