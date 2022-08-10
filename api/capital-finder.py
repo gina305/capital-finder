@@ -19,7 +19,7 @@ class handler(BaseHTTPRequestHandler):
 
     for  item in query_dict:
       
-      if query_dict[country]
+      if query_dict["country"]:
         msg= str(item)
         break
     #msg="testing"
