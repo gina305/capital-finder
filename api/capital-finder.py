@@ -39,8 +39,8 @@ class handler(BaseHTTPRequestHandler):
       capital = capital.get('capital')[0]
     user_response = f"The capital of {msg} is {capital}"
 
-    self.wfile.write(msg.encode())  
-    self.wfile.write(url.encode())
+    self.wfile.write(user_response.encode())  
+
     #self.wfile.write(r_string.encode()) 
 
 
