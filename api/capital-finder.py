@@ -12,16 +12,15 @@ class handler(BaseHTTPRequestHandler):
     
     url_components = parse.urlsplit(self.path)
     query_string_list = parse.parse_qsl(url_components.query)
-    msg=""
+    
   
     query_dict = dict(query_string_list)
 
 
     for  item in query_dict:
       
-      if query_dict["country"]:
+      if query_dict[item].lower() == 'country':
         msg= str(item)
-        break
     #msg="testing"
 
 
