@@ -15,7 +15,6 @@ class handler(BaseHTTPRequestHandler):
   
     #Store user request values
     query_dict = dict(query_string_list)
-    
 
     #Extract only the country
     for key, value in query_dict.items():
