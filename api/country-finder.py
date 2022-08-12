@@ -21,8 +21,8 @@ class handler(BaseHTTPRequestHandler):
             response = requests.get(query_url)
             data = response.json()
 
-            country = data[0]['name']
-            country = str(country['common'])
+            parsed_country = data[0]['name']
+            country = str(parsed_country['common'])
             result_str = f"{query.upper()} is the capital of {country.upper()}"
 
             # This is in both statements so whatever content returned is consistent
