@@ -6,14 +6,13 @@ import requests
 class handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        # Necessary variables for parsing through string; also contains dicitonary
+        # set variables 
         url_components = parse.urlsplit(self.path)
         query_string_list = parse.parse_qsl(url_components.query)
         query_dict = dict(query_string_list)
 
         if 'name' in query_dict:
-            # if the country exists, follow through code below
-
+         
             url = 'https://restcountries.com/v3.1/name/'
             query = query_dict['name']
             query_url = url + query
@@ -34,10 +33,6 @@ class handler(BaseHTTPRequestHandler):
         else:
             # if the country doesn't exist/user error, return message below
             error_message = "Please search for a valid capital city to receive a valid country."
-
-            # self.send_response(200)
-            # self.send_header('Content-type', 'text/plain')
-            # self.end_headers()
 
             self.wfile.write(error_message.encode())
         return
