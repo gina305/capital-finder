@@ -5,34 +5,42 @@ import requests
 
 class handler(BaseHTTPRequestHandler):
 
-    def do_GET(self):
-        # set variables 
-        url_components = parse.urlsplit(self.path)
-        query_string_list = parse.parse_qsl(url_components.query)
-        query_dict = dict(query_string_list)
 
-        if 'name' in query_dict:
-         
-            url = 'https://restcountries.com/v3.1/name/'
-            query = query_dict['name']
-            query_url = url + query
+  def do_GET(self):
+    self.send_response(200)
+    self.send_header('Content-type', 'text/plain')
+    self.end_headers()
+    msg = ""
+    url_components = parse.urlsplit(self.path)
+    query_string_list = parse.parse_qsl(url_components.query)
+    
+  
+    #Store user request values
+    query_dict = dict(query_string_list)
+    user_response = ""
+    #Extract only the country
+    for key, value in query_dict.items():
+      if str(key.lower()) == "country":
+        msg = str(value)
+        capital = getCapital(msg)
+        user_response = f"The capital of {msg} is {capital}"
+        break
+     
 
-            response = requests.get(query_url)
-            data = response.json()
+    def getCapital(country):
+      url = 'https://restcountries.com/v3.1/name/' + country
 
-            parsed_city = data[0]['capital']
-            city = str(parsed_city[0])
-            result_str = f"The capital of {query.upper()} is {city.upper()}"
+      #Create a http request
+      r = requests.get(url)
 
-            # This is in both statements so whatever content returned is consistent
-            self.send_response(200)
-            self.send_header('Content-type', 'text/plain')
-            self.end_headers()
+      #Saves the response as a dictionary
+      r_objects = r.json() 
 
-            self.wfile.write(result_str.encode())
-        else:
-            # if the country doesn't exist/user error, return message below
-            error_message = "Please search for a valid capital city to receive a valid country."
+      #Extract and save the capital of the response
+      capital = r_objects[0]
+      capital = capital.get('capital')[0]
+      return capital
 
-            self.wfile.write(error_message.encode())
-        return
+    self.wfile.write(user_response.encode())  
+    return
+
