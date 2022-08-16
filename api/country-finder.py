@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
             self.end_headers()
             
             # if the country exists, follow through code below
-            query = query_dict['country']
+            query = query_dict['name']
 
             #Request API data for this query
             query_url = 'https://restcountries.com/v3.1/name/' + query
@@ -28,12 +28,12 @@ class handler(BaseHTTPRequestHandler):
             #Extract query from returned data
             city = data[0]['capital']
             city = str(city[0])
-            result = f"The capital of {query.upper()} is {city.upper}."
+            result = f"{city.upper} is the capital of {query.upper()}."
             
             self.wfile.write(result.encode())
         else:
 
-            self.wfile.write("Invalid entry. Try something like .../api/capital-finder/country=Bahamas".encode())
+            self.wfile.write("Invalid entry. Try something like .../api/capital-finder/name=Bahamas".encode())
         return
 
 # non-country is getting pushed into query_dict and therefore, gets passed into the "it statement". So it ends in a 502 and doesn't get to the else statement.
