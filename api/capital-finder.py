@@ -28,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
             #Extract query from returned data
             parsed_city = data[0]['capital']
             city = str(parsed_city[0])
-            result_str = f"The capital of {query.upper()} is {city.upper()}"
+            result = f"The capital of {query.upper()} is {city.upper()}"
             self.wfile.write(result.encode())
         else:
 
