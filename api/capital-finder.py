@@ -28,11 +28,9 @@ class handler(BaseHTTPRequestHandler):
             #Extract query from returned data
             parsed_city = data[0]['capital']
             city = str(parsed_city[0])
-            result = f"The capital of {query.upper()} is {city.upper()}"
+            result = f"The capital of {query.upper()} is {city.upper()}."
             self.wfile.write(result.encode())
         else:
 
             self.wfile.write("Invalid entry. Try something like .../api/capital-finder/name=Bahamas".encode())
         return
-
-# non-country is getting pushed into query_dict and therefore, gets passed into the "it statement". So it ends in a 502 and doesn't get to the else statement.
