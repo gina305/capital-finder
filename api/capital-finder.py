@@ -26,10 +26,9 @@ class handler(BaseHTTPRequestHandler):
             data = response.json()
 
             #Extract query from returned data
-            city = data[0]['capital']
-            city = str(city[0])
-            result = f"The capital of {query.upper()} is {city.upper}."
-            
+            parsed_city = data[0]['capital']
+            city = str(parsed_city[0])
+            result_str = f"The capital of {query.upper()} is {city.upper()}"
             self.wfile.write(result.encode())
         else:
 
